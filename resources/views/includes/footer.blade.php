@@ -9,7 +9,7 @@
 						<!-- Single Widget -->
 						<div class="single-footer about">
 							<div class="logo">
-								<a href="index.html"><img src="assets/images/logo2.png" alt="#"></a>
+								<a href="index.html"><img src="{{ asset('assets/images/logo2.png')}}" alt="#"></a>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
 							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
@@ -82,7 +82,7 @@
 						</div>
 						<div class="col-lg-6 col-12">
 							<div class="right">
-								<img src="assets/images/payments.png" alt="#">
+								<img src="{{ asset('assets/images/payments.png')}}" alt="#">
 							</div>
 						</div>
 					</div>
@@ -93,36 +93,47 @@
 	<!-- /End Footer Area -->
  
 	<!-- Jquery -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/jquery-migrate-3.0.0.js"></script>
-	<script src="assets/js/jquery-ui.min.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js')}}"></script>
+    <script src="{{ asset('assets/js/jquery-migrate-3.0.0.js')}}"></script>
+	<script src="{{ asset('assets/js/jquery-ui.min.js')}}"></script>
 	<!-- Popper JS -->
-	<script src="assets/js/popper.min.js"></script>
+	<script src="{{ asset('assets/js/popper.min.js')}}"></script>
 	<!-- Bootstrap JS -->
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="{{ asset('assets/js/bootstrap.min.js')}}"></script>
 	<!-- Color JS -->
-	{{-- <script src="assets/js/colors.js"></script> --}}
+	{{-- <script src="{{ asset('assets/js/colors.js')}}"></script> --}}
 	<!-- Slicknav JS -->
-	<script src="assets/js/slicknav.min.js"></script>
+	<script src="{{ asset('assets/js/slicknav.min.js')}}"></script>
 	<!-- Owl Carousel JS -->
-	<script src="assets/js/owl-carousel.js"></script>
+	<script src="{{ asset('assets/js/owl-carousel.js')}}"></script>
 	<!-- Magnific Popup JS -->
-	<script src="assets/js/magnific-popup.js"></script>
+	<script src="{{ asset('assets/js/magnific-popup.js')}}"></script>
 	<!-- Waypoints JS -->
-	<script src="assets/js/waypoints.min.js"></script>
+	<script src="{{ asset('assets/js/waypoints.min.js')}}"></script>
 	<!-- Countdown JS -->
-	<script src="assets/js/finalcountdown.min.js"></script>
+	<script src="{{ asset('assets/js/finalcountdown.min.js')}}"></script>
 	<!-- Nice Select JS -->
-	<script src="assets/js/nicesellect.js"></script>
+	<script src="{{ asset('assets/js/nicesellect.js')}}"></script>
 	<!-- Flex Slider JS -->
-	<script src="assets/js/flex-slider.js"></script>
+	<script src="{{ asset('assets/js/flex-slider.js')}}"></script>
 	<!-- ScrollUp JS -->
-	<script src="assets/js/scrollup.js"></script>
+	<script src="{{ asset('assets/js/scrollup.js')}}"></script>
 	<!-- Onepage Nav JS -->
-	<script src="assets/js/onepage-nav.min.js"></script>
+	<script src="{{ asset('assets/js/onepage-nav.min.js')}}"></script>
 	<!-- Easing JS -->
-	<script src="assets/js/easing.js"></script>
+	<script src="{{ asset('assets/js/easing.js')}}"></script>
 	<!-- Active JS -->
-	<script src="assets/js/active.js"></script>
+	<script src="{{ asset('assets/js/active.js')}}"></script>
+
+	
+
+	{{-- <script src="{{ asset('assets/vendor/jquery/jquery.min.js')}}"></script>
+    <!-- Vendor JS-->
+    <script src="{{ asset('assets/vendor/select2/select2.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/datepicker/moment.min.js')}}"></script>
+    <script src="{{ asset('assets/vendor/datepicker/daterangepicker.js')}}"></script>
+
+    <!-- Main JS-->
+    <script src="{{ asset('assets/js/global.js')}}"></script> --}}
 </body>
 </html>

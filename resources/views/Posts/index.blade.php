@@ -16,12 +16,16 @@
                     <div class="nav-main">
                         <!-- Tab Nav -->
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                            @foreach($items as $item)
+                                Member ID: {{ $item['location'] }} <br>
+
+                            @endforeach
+{{-- 
+                            @foreach ($cats as $cat)
                             <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#man" role="tab">Man</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#women" role="tab">Woman</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#kids" role="tab">Kids</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#accessories" role="tab">Accessories</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#essential" role="tab">Essential</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#prices" role="tab">Prices</a></li>
+                            @endforeach --}}
+                           
                         </ul>
                         <!--/ End Tab Nav -->
                     </div>
@@ -30,7 +34,6 @@
                         <div class="tab-pane fade show active" id="man" role="tabpanel">
                             <div class="tab-single">
                                 <div class="row">
-
 
                                     @foreach ($items as $item)
                                         <div class="col-xl-3 col-lg-4 col-md-4 col-12">
@@ -52,9 +55,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="product-content">
-                                                    <h3><a href="product-details.html">{{$item->item}}</a></h3>
+                                                    <h3><a href="{{url('posts/'. $item['location'] .'')}}">{{ $item['item'] }}</a></h3>
                                                     <div class="product-price">
-                                                        <span>{{$item->description}}</span>
+                                                        <span>{{ $item['description'] }}</span>
                                                     </div>
                                                 </div>
                                             </div>

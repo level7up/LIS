@@ -20,4 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('posts', 'PostController@index')->name('posts');
+
+// Posts
+Route::get('posts', 'PostController@index')->name('items');
+Route::get('posts/create', 'PostController@create')->name('create-item');
+Route::post('posts', 'PostController@store')->name('item-store');
+Route::delete('posts/{id}', 'PostController@destroy')->name('delete-item');
+Route::get('posts/{id}', 'PostController@show')->name('show-item');
+
+
+

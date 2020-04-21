@@ -1,10 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Front;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
+use Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Str;
+
 use App\Post;
+use App\Category;
+
+
 
 
 class PostController extends Controller
@@ -16,8 +23,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $cats =Category::all();
         $items= Post::paginate(10);
-        return view('posts.index', compact('items'));
+        return view('posts.index', compact('items','cats'));
     }
 
     /**
@@ -27,7 +35,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $cats =Category::all();
+        return view('posts.create',compact('cats'));
     }
 
     /**
@@ -38,7 +47,34 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //--- Validation Section
+        $rules = [
+            'name'=> 'required',
+            'contact_number'=> 'required',
+            'item'=> 'required',
+            'description'=> 'required',
+            'location'=> 'required',
+            // 'date'=>'required',
+            "category_id" => "required|required:categories,id",
+          ];
+
+        $input = $request->all();
+
+        $image = $request->image;
+        $image = base64_decode($image);
+        $image_name = time();
+        $path = 'assets/images/items/'.$image_name;
+        file_put_contents($path, $image);
+        $input['image'] = $image_name;
+
+        $item = Post::create($input);
+
+        $msg = 'New Art Added Successfully';
+
+        return redirect()->route('items')->with('success' , $msg);
+
+
+
     }
 
     /**
@@ -49,7 +85,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Post::findOrFail($id);
+        $status = $item->status;
+        return view('Posts.show',compact('item', 'status'));
     }
 
     /**
@@ -83,6 +121,12 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Post::findOrFail($id);
+      
+        $item->delete();
     }
+
+
+
+    
 }

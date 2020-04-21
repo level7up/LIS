@@ -5,10 +5,14 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
-use App\Http\Resources\Post as PostResource;
+use Validator;
+
+use App\Http\Resources\PostResource as PostResource;
 
 class PostController extends Controller
 {
+    use ApiResponse;
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,14 @@ class PostController extends Controller
     public function index()
     {
         $posts= Post::paginate(10);
-        return PostResource::collection($posts);
+        if ($posts){
+            $items = PostResource::collection($posts);
+
+        }
+        // $items = PostResource::collection($posts);
+
+         return $this->apiResponse($items);
+        // return view('Posts.index',['items' => $items,]);
     }
 
     /**
@@ -38,7 +49,27 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all() , [
+            'item'=> 'required',
+            'name'=> 'required|max:255',
+            'description'=> 'required',
+            'category_id'=> 'required|exists:categories,id',
+            'date'=> 'numeric',
+            'location'=> 'required',
+            // 'state'=> 'required',
+            'image'=>'nullable',
+            'contact_number'=> 'required|numeric'
+          ]);
+
+          if($validator->fails()){
+            return $this->apiResponse('' , $validator->errors() , 422);
+          }
+
+          $data = $request->all();
+          $item = Post::create($data);
+
+          return $this->single_row('PostResource' , $item , 'Created Successfully' , 200);
+
     }
 
     /**
@@ -49,7 +80,9 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $item = Post::findOrFail($id);
+        $status = $item->status;
+        return view('Posts.show',compact('item', 'status'));
     }
 
     /**
