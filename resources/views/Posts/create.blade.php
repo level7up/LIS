@@ -14,7 +14,7 @@
                             <h4>Get in touch</h4>
                             <h3>Write us a message</h3>
                         </div>
-                        <form class="form" method="post" action="{{route('item-store')}}">
+                        <form class="form" method="post" action="{{route('item-store')}}" enctype="multipart/form-data">
                             @csrf <!-- {{ csrf_field() }} -->
 
                             <div class="row">

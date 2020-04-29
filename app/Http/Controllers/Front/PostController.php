@@ -24,7 +24,7 @@ class PostController extends Controller
     public function index()
     {
         $cats =Category::all();
-        $items= Post::paginate(10);
+        $items= Post::paginate(12);
         return view('posts.index', compact('items','cats'));
     }
 
@@ -49,6 +49,12 @@ class PostController extends Controller
     {
         //--- Validation Section
         $rules = [
+            
+          ];
+
+        
+
+        $request->validate([
             'name'=> 'required',
             'contact_number'=> 'required',
             'item'=> 'required',
@@ -56,16 +62,15 @@ class PostController extends Controller
             'location'=> 'required',
             // 'date'=>'required',
             "category_id" => "required|required:categories,id",
-          ];
-
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
         $input = $request->all();
+  
+        $imageName = time().'.'.$request->image->extension();  
+   
+        $request->image->move(public_path('assets/images/items'), $imageName);
 
-        $image = $request->image;
-        $image = base64_decode($image);
-        $image_name = time();
-        $path = 'assets/images/items/'.$image_name;
-        file_put_contents($path, $image);
-        $input['image'] = $image_name;
+        $input['image'] = $imageName;
 
         $item = Post::create($input);
 

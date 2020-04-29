@@ -12,9 +12,9 @@
                             <div class="col-sm-5 col-md-4 col-lg-4">
                                 <div class="product-img-box resbaner">
                                     <!-- big images -->
-                                    <p class="product-view-img colorbox">
-                                        <img id="zoom_image" data-zoom-image="assets/image/product/view-image/big-1.png" src="{{asset('assets/images/temps/big-1.png')}}" alt="view image">
-                                        <a href="{{asset('assets/images/temps/big-1.png')}}" class="fa fa-search-plus zoom-icon" title=""></a>
+                                    <p  class="product-view-img colorbox">
+                                        <img style="margin:5px" id="zoom_image" data-zoom-image="{{asset('assets/images/items/'. $item->image.'')}}" src="{{asset('assets/images/items/'. $item->image.'')}}" alt="view image">
+                                        <a href="{{asset('assets/images/items/'. $item->image.'')}}" class="fa fa-search-plus zoom-icon" title=""></a>
                                     </p>
                                     <!-- / big images -->
                                    
@@ -25,16 +25,10 @@
                             <div class="col-sm-7 col-md-8 col-lg-8">
                                 <div class="product-shop">
                                     <div class="products-name">
-                                        <h1>{{$item->item}}</h1>
+                                        <li class="nav-link "> <h1>{{$item->item}}</h1></li>
                                     </div>
                                     <div class="ratting-box">
-                                        <div class="rating">
-                                            <span class="star active"></span>
-                                            <span class="star active"></span>
-                                            <span class="star active"></span>
-                                            <span class="star active"></span>
-                                            <span class="star-o"></span>
-                                        </div>
+                                       
                                         <div class="product-review">
                                             <ul>
                                                 <li>Founded At: {{$item->date}} </li>

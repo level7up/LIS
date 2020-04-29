@@ -31,6 +31,15 @@ class PostController extends Controller
         // return view('Posts.index',['items' => $items,]);
     }
 
+    public function frontIndex()
+    {
+        $posts= Post::paginate(10);
+        if ($posts){
+            $items = PostResource::collection($posts);
+        }
+        return view('Posts.index',['items' => $items,]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *

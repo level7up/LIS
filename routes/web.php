@@ -14,16 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PostController@index')->name('home');
 
 // Posts
 Route::get('posts', 'PostController@index')->name('items');
-Route::get('posts/create', 'PostController@create')->name('create-item');
+Route::get('post/create', 'PostController@create')->name('create-item');
 Route::post('posts', 'PostController@store')->name('item-store');
 Route::delete('posts/{id}', 'PostController@destroy')->name('delete-item');
 Route::get('posts/{id}', 'PostController@show')->name('show-item');

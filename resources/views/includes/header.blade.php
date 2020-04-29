@@ -35,7 +35,9 @@
 	<!-- Owl Carousel -->
     <link rel="stylesheet" href="{{ asset('assets/css/owl-carousel.css') }}">
 	<!-- Slicknav -->
-    <link rel="stylesheet" href="{{ asset('assets/css/slicknav.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('assets/css/slicknav.min.css') }}">
+
+	
 	
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="{{ asset('assets/css/reset.css') }}">
