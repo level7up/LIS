@@ -89,9 +89,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $item = Post::findOrFail($id);
-        $status = $item->status;
-        return view('Posts.show',compact('item', 'status'));
+       
     }
 
     /**
